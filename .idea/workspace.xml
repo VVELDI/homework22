@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acb36889-08a4-429b-bb24-2b05c1c22fd8" name="Changes" comment="Настроил джанго">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="acb36889-08a4-429b-bb24-2b05c1c22fd8" name="Changes" comment="Подключил шаблон от главной страницы">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,22 +39,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "VVELDI"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;VVELDI&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/VVELDI/homework22.git",
-    "accountId": "4fc3dc62-9ff7-416f-a274-a977c2192f96"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/VVELDI/homework22.git&quot;,
+    &quot;accountId&quot;: &quot;4fc3dc62-9ff7-416f-a274-a977c2192f96&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2vOIWU4I3J00NaA9cURmUbnzCpZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -55,11 +64,43 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "feature/homework22"
+    "git-widget-placeholder": "feature/homework22",
+    "last_opened_file_path": "F:/SkyPro/Projects/project22/pythonProject/manage.py"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\SkyPro\Projects\project22\pythonProject\catalog\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python">
+      <module name="pythonProject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Poetry (pythonProject)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -92,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744011008569</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Подключил шаблон от главной страницы">
+      <option name="closed" value="true" />
+      <created>1744012674602</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744012674602</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,6 +170,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создал окружение" />
     <MESSAGE value="Настроил джанго" />
-    <option name="LAST_COMMIT_MESSAGE" value="Настроил джанго" />
+    <MESSAGE value="Подключил шаблон от главной страницы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Подключил шаблон от главной страницы" />
   </component>
 </project>
