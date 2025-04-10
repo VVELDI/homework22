@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('catalog.urls')),  # Все пути теперь из catalog
+    path('', include('catalog.urls')),  # Все пути из приложения catalog
 ]

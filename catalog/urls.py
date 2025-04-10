@@ -1,8 +1,8 @@
 from django.urls import path
-from . import views
+from .views import HomeView, ContactsView, CatalogView
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('contacts/', views.contacts, name='contacts'),
-    path('catalog/', views.catalog_home, name='catalog'),  # Теперь функция существует
+    path('', HomeView.as_view(), name='home'),
+    path('contacts/', ContactsView.as_view(), name='contacts'),
+    path('catalog/', CatalogView.as_view(), name='catalog'),  # Новый путь
 ]

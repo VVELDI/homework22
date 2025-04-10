@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acb36889-08a4-429b-bb24-2b05c1c22fd8" name="Changes" comment="Подключил шаблон от главной страницы">
+    <list default="true" id="acb36889-08a4-429b-bb24-2b05c1c22fd8" name="Changes" comment="Создал новое приложение catalog">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/templates/contacts.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/contacts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744012674602</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Создал новое приложение catalog">
+      <option name="closed" value="true" />
+      <created>1744284360887</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1744284360887</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,6 +172,7 @@
     <MESSAGE value="Создал окружение" />
     <MESSAGE value="Настроил джанго" />
     <MESSAGE value="Подключил шаблон от главной страницы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Подключил шаблон от главной страницы" />
+    <MESSAGE value="Создал новое приложение catalog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Создал новое приложение catalog" />
   </component>
 </project>
