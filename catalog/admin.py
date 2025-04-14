@@ -3,18 +3,18 @@ from django.contrib import admin
 from .models import Product, Category
 
 
-# Настроим отображение для Category
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')  # Показать id и name в списке
+    list_display = ('id', 'name')
 
 
-# Настроим отображение и фильтрацию для Product
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price', 'category')  # Показать id, name, price, category
-    list_filter = ('category',)  # Фильтрация по категории
-    search_fields = ('name', 'description')  # Поиск по name и description
+    list_display = ('id', 'name', 'price', 'category', 'image')  # Добавили image для отображения
+    list_filter = ('category',)
+    search_fields = ('name', 'description')
+
+    # Чтобы изображение отображалось в форме редактирования
+    fields = ('name', 'description', 'price', 'category', 'image')  # Убедимся, что поле image включено
 
 
-# Регистрация моделей в админке
-admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Product, ProductAdmin)
