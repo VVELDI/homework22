@@ -1,5 +1,11 @@
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+
+# Загружаем переменные окружения из .env
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-21z6o(9yix+j19az-5v4nb5x0hytw7-#d^og_hpfaii=^f$svc'
@@ -51,11 +57,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'homework',          # Имя вашей базы
-        'USER': 'takao',          # Или ваше имя пользователя, если создавали нового
-        'PASSWORD': 'Vitolik13rus',  # Ваш пароль
-        'HOST': 'localhost',         # Оставляем localhost для локальной БД
-        'PORT': '5432',              # Стандартный порт PostgreSQL
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
