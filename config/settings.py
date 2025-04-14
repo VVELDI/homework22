@@ -50,8 +50,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'homework',          # Имя вашей базы
+        'USER': 'takao',          # Или ваше имя пользователя, если создавали нового
+        'PASSWORD': 'Vitolik13rus',  # Ваш пароль
+        'HOST': 'localhost',         # Оставляем localhost для локальной БД
+        'PORT': '5432',              # Стандартный порт PostgreSQL
     }
 }
 
