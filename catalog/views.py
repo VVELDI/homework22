@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.views import View  # Импортируем базовый класс View
-
+from django.views.generic import DetailView
 from .models import Product
 
 
@@ -32,9 +32,7 @@ class CatalogView(View):
         return render(request, 'catalog.html')
 
 
-class ProductDetailView(View):
-    """Контроллер страницы с подробной информацией о товаре"""
-
-    def get(self, request, pk):
-        product = get_object_or_404(Product, pk=pk)
-        return render(request, 'product_detail.html', {'product': product})
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_detail.html'
+    context_object_name = 'product'

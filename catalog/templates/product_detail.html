@@ -1,14 +1,16 @@
-{% extends "base.html" %}
+<!-- templates/product_detail.html -->
+{% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ product.name }}</h1>
-  <p><strong>Категория:</strong> {{ product.category.name }}</p>
-  <p><strong>Описание:</strong> {{ product.description }}</p>
-  <p><strong>Цена:</strong> {{ product.price }} ₽</p>
-  <p><strong>Создан:</strong> {{ product.created_at }}</p>
-  <p><strong>Обновлён:</strong> {{ product.updated_at }}</p>
+<div class="container text-center">
+    <h2>{{ product.name }}</h2>
+    {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mb-3" style="max-height: 400px;">
+    {% endif %}
+    <p>{{ product.description }}</p>
+    <h4 class="text-success">${{ product.price }}</h4>
 
-  {% if product.image %}
-    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 300px;">
-  {% endif %}
+    <a href="#" class="btn btn-primary">Купить</a>
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary ms-2">Назад</a>
+</div>
 {% endblock %}
