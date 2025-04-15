@@ -1,12 +1,15 @@
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.views import View  # Импортируем базовый класс View
 
+from .models import Product
+
+
 
 class HomeView(View):
-    """Контроллер главной страницы"""
-
     def get(self, request):
-        return render(request, 'home.html')
+        products = Product.objects.all()
+        return render(request, 'home.html', {'products': products})
 
 
 class ContactsView(View):
@@ -27,3 +30,11 @@ class ContactsView(View):
 class CatalogView(View):
     def get(self, request):
         return render(request, 'catalog.html')
+
+
+class ProductDetailView(View):
+    """Контроллер страницы с подробной информацией о товаре"""
+
+    def get(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        return render(request, 'product_detail.html', {'product': product})

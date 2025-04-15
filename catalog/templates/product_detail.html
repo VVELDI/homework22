@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ product.name }}</h1>
+  <p><strong>Категория:</strong> {{ product.category.name }}</p>
+  <p><strong>Описание:</strong> {{ product.description }}</p>
+  <p><strong>Цена:</strong> {{ product.price }} ₽</p>
+  <p><strong>Создан:</strong> {{ product.created_at }}</p>
+  <p><strong>Обновлён:</strong> {{ product.updated_at }}</p>
+
+  {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 300px;">
+  {% endif %}
+{% endblock %}
