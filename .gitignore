@@ -102,3 +102,5 @@ secrets.yml
 # Файлы загрузок
 uploads/
 media/
+
+db.sqlite3
