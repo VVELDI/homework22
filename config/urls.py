@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('catalog.urls')),  # Все пути из приложения catalog
+    path('blog/', include('blog.urls', namespace='blog')),
 ]
 
 # Добавляем маршруты для медиаданных, если DEBUG включен

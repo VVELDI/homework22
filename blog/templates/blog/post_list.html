@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="my-4">Блог</h1>
+
+  {% if posts %}
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            {% if post.preview %}
+              <img src="{{ post.preview.url }}" class="card-img-top" alt="{{ post.title }}">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p class="card-text">{{ post.content|truncatechars:100 }}</p>
+              <a href="{% url 'blog:post_detail' post.pk %}" class="btn btn-primary">Читать</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="alert alert-info">Статей пока нет.</p>
+  {% endif %}
+</div>
+{% endblock %}
