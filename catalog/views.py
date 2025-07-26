@@ -1,37 +1,50 @@
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render
-from django.views import View  # Импортируем базовый класс View
-from django.views.generic import DetailView
+# catalog/views.py
+from django.views.generic import ListView, TemplateView, DetailView
+from django.views import View
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Product
 
 
+# Главная страница
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
-class HomeView(View):
-    def get(self, request):
-        products = Product.objects.all()
-        return render(request, 'home.html', {'products': products})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = Product.objects.all()
+        return context
 
 
+# Страница контактов
 class ContactsView(View):
-    """Контроллер страницы контактов"""
+    template_name = 'contacts.html'
 
-    def get(self, request):
-        return render(request, 'contacts.html')
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'success': False})
 
-    def post(self, request):
-        # Обработка формы (пример)
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(f"Получено сообщение от {name}, тел: {phone}: {message}")
-        return render(request, 'contacts.html', {'success': True})
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        message = request.POST.get('message', '').strip()
+
+        if name and phone and message:
+            print(f"Получено сообщение от {name}, тел: {phone}: {message}")
+            return render(request, self.template_name, {'success': True})
+        else:
+            # Вывод сообщения об ошибке (необязательно — зависит от шаблона)
+            messages.error(request, "Пожалуйста, заполните все поля.")
+            return render(request, self.template_name, {'success': False})
 
 
-class CatalogView(View):
-    def get(self, request):
-        return render(request, 'catalog.html')
+# Каталог товаров
+class CatalogView(ListView):
+    model = Product
+    template_name = 'catalog.html'
+    context_object_name = 'products'
 
 
+# Детальная страница товара
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_detail.html'
