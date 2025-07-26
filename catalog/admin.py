@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from .forms import ProductForm  # ← подключаем форму с цензурой и проверкой цены
 from .models import Product, Category
 
 
@@ -8,12 +9,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price', 'category', 'image')  # Добавили image для отображения
+    form = ProductForm  # ← используем кастомную форму
+    list_display = ('id', 'name', 'price', 'category', 'image')
     list_filter = ('category',)
     search_fields = ('name', 'description')
-
-    # Чтобы изображение отображалось в форме редактирования
-    fields = ('name', 'description', 'price', 'category', 'image')  # Убедимся, что поле image включено
+    fields = ('name', 'description', 'price', 'category', 'image')
 
 
 admin.site.register(Category, CategoryAdmin)
