@@ -1,16 +1,23 @@
-<!-- templates/product_detail.html -->
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% block content %}
-<div class="container text-center">
-    <h2>{{ product.name }}</h2>
+<div class="container mt-4">
+    <h1>{{ product.name }}</h1>
+    <p><strong>Описание:</strong> {{ product.description }}</p>
+    <p><strong>Цена:</strong> {{ product.price }} ₽</p>
+    <p><strong>Категория:</strong> {{ product.category }}</p>
     {% if product.image %}
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mb-3" style="max-height: 400px;">
+        <img src="{{ product.image.url }}" class="img-fluid" alt="Product image">
     {% endif %}
-    <p>{{ product.description }}</p>
-    <h4 class="text-success">${{ product.price }}</h4>
 
-    <a href="#" class="btn btn-primary">Купить</a>
-    <a href="{% url 'home' %}" class="btn btn-outline-secondary ms-2">Назад</a>
+    <hr>
+
+    {% if request.user.is_authenticated %}
+        {% if product.owner == request.user or request.user.has_perm('catalog.can_unpublish_product') %}
+            <a href="{% url 'product_update' product.pk %}" class="btn btn-warning">Редактировать</a>
+            <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
+    {% endif %}
+
+    <a href="{% url 'catalog' %}" class="btn btn-secondary mt-3">Назад в каталог</a>
 </div>
 {% endblock %}
