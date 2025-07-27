@@ -8,6 +8,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
 
 class Product(models.Model):
     STATUS_CHOICES = [
@@ -41,3 +45,5 @@ class Product(models.Model):
         permissions = [
             ('can_unpublish_product', 'Может отменять публикацию продукта'),
         ]
+        verbose_name = "Продукт"
+        verbose_name_plural = "Продукты"

@@ -1,23 +1,30 @@
 {% extends "base.html" %}
+
 {% block content %}
 <div class="container mt-4">
-    <h1>{{ product.name }}</h1>
-    <p><strong>Описание:</strong> {{ product.description }}</p>
-    <p><strong>Цена:</strong> {{ product.price }} ₽</p>
-    <p><strong>Категория:</strong> {{ product.category }}</p>
+    <h2>{{ product.name }}</h2>
+
     {% if product.image %}
-        <img src="{{ product.image.url }}" class="img-fluid" alt="Product image">
+        <img src="{{ product.image.url }}" class="img-fluid mb-3" alt="{{ product.name }}">
     {% endif %}
+
+    <p><strong>Описание:</strong> {{ product.description }}</p>
+    <p><strong>Цена:</strong> {{ product.price }} руб.</p>
+    <p><strong>Категория:</strong> {{ product.category.name }}</p>
+    <p><strong>Дата создания:</strong> {{ product.created_at|date:"d.m.Y H:i" }}</p>
+    <p><strong>Статус:</strong>
+        {% if product.status == 'published' %}
+            Опубликован
+        {% else %}
+            Черновик
+        {% endif %}
+    </p>
 
     <hr>
 
-    {% if request.user.is_authenticated %}
-        {% if product.owner == request.user or request.user.has_perm('catalog.can_unpublish_product') %}
-            <a href="{% url 'product_update' product.pk %}" class="btn btn-warning">Редактировать</a>
-            <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
-        {% endif %}
+    {% if user.is_authenticated and user == product.owner or perms.catalog.can_unpublish_product %}
+        <a href="{% url 'product_update' product.pk %}" class="btn btn-primary">Редактировать</a>
+        <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
     {% endif %}
-
-    <a href="{% url 'catalog' %}" class="btn btn-secondary mt-3">Назад в каталог</a>
 </div>
 {% endblock %}
