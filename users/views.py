@@ -1,7 +1,11 @@
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
+
 from .forms import UserRegisterForm, UserLoginForm
 from .models import CustomUser
 
@@ -14,12 +18,23 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        send_mail(
-            subject='Добро пожаловать в Skystore!',
-            message='Вы успешно зарегистрировались.',
-            from_email='noreply@skystore.local',
-            recipient_list=[form.instance.email],
+
+        user_email = form.instance.email
+        subject = 'Добро пожаловать в Skystore!'
+
+        # HTML и текстовая версия письма
+        html_message = render_to_string('users/welcome_email.html', {'user': form.instance})
+        text_message = strip_tags(html_message)
+
+        email = EmailMultiAlternatives(
+            subject=subject,
+            body=text_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[user_email]
         )
+        email.attach_alternative(html_message, "text/html")
+        email.send()
+
         return response
 
 

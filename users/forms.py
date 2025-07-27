@@ -10,4 +10,4 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserLoginForm(AuthenticationForm):
-    username = forms.EmailField(label='Email')  # заменяем label
+    username = forms.EmailField(label='Email')
