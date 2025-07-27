@@ -1,9 +1,14 @@
 # catalog/views.py
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import (
+    ListView, TemplateView, DetailView,
+    CreateView, UpdateView
+)
 from django.views import View
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib import messages
+from django.urls import reverse_lazy
 from .models import Product
+from .forms import ProductForm
 
 
 # Главная страница
@@ -32,7 +37,6 @@ class ContactsView(View):
             print(f"Получено сообщение от {name}, тел: {phone}: {message}")
             return render(request, self.template_name, {'success': True})
         else:
-            # Вывод сообщения об ошибке (необязательно — зависит от шаблона)
             messages.error(request, "Пожалуйста, заполните все поля.")
             return render(request, self.template_name, {'success': False})
 
@@ -49,3 +53,19 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_detail.html'
     context_object_name = 'product'
+
+
+# Создание продукта
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_form.html'
+    success_url = reverse_lazy('home')
+
+
+# Редактирование продукта
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_form.html'
+    success_url = reverse_lazy('home')
