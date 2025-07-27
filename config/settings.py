@@ -1,6 +1,6 @@
+import os
 from pathlib import Path
 
-import os
 from dotenv import load_dotenv
 
 # Загружаем переменные окружения из .env
@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog',
     'blog',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -98,3 +99,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+AUTH_USER_MODEL = 'users.CustomUser'
+LANGUAGE_CODE = 'ru-ru'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@skystore.local'
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = '/users/login/'

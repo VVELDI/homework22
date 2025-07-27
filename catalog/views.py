@@ -1,4 +1,3 @@
-# catalog/views.py
 from django.views.generic import (
     ListView, TemplateView, DetailView,
     CreateView, UpdateView
@@ -7,6 +6,8 @@ from django.views import View
 from django.shortcuts import render
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin  # 👈 добавили
+
 from .models import Product
 from .forms import ProductForm
 
@@ -55,16 +56,16 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
 
-# Создание продукта
-class ProductCreateView(CreateView):
+# Создание продукта — только для авторизованных
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
     success_url = reverse_lazy('home')
 
 
-# Редактирование продукта
-class ProductUpdateView(UpdateView):
+# Редактирование продукта — только для авторизованных
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
