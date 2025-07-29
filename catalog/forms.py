@@ -1,35 +1,43 @@
-# catalog/forms.py
 from django import forms
-from .models import Product
+from .models import Product, Category
+
 
 FORBIDDEN_WORDS = [
-    'казино', 'криптовалюта', 'крипта', 'биржа',
-    'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
+    'казино',
+    'криптовалюта',
+    'крипта',
+    'биржа',
+    'дешево',
+    'бесплатно',
+    'обман',
+    'полиция',
+    'радар',
 ]
+
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'image', 'category']
+        fields = ['name', 'description', 'price', 'category', 'image', 'status']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
-            field.widget.attrs.update({
-                'class': 'form-control',
-                'placeholder': field.label
-            })
+            field.widget.attrs['class'] = 'form-control'
 
-    def clean(self):
-        cleaned_data = super().clean()
-        name = cleaned_data.get('name', '')
-        description = cleaned_data.get('description', '')
-        all_text = f"{name} {description}".lower()
-
+    def clean_name(self):
+        name = self.cleaned_data.get('name', '')
         for word in FORBIDDEN_WORDS:
-            if word in all_text:
-                raise forms.ValidationError(f"Использование слова «{word}» запрещено.")
-        return cleaned_data
+            if word.lower() in name.lower():
+                raise forms.ValidationError(f"Слово «{word}» запрещено в названии.")
+        return name
+
+    def clean_description(self):
+        description = self.cleaned_data.get('description', '')
+        for word in FORBIDDEN_WORDS:
+            if word.lower() in description.lower():
+                raise forms.ValidationError(f"Слово «{word}» запрещено в описании.")
+        return description
 
     def clean_price(self):
         price = self.cleaned_data.get('price')
